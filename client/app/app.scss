@@ -1,6 +1,6 @@
 @import "common/common";
 
 .app {
-  height: 100%;
-  background-color: $lightBgColor;
+  background: $lightSilver;
+  background: linear-gradient(135deg, $lightSilver 0%, $darkBlue 0%, $silver 69%, $darkSilver 100%);
 }

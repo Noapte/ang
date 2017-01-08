@@ -1,3 +1,23 @@
-.home {
-  color: red;
+h1 {
+  text-align: center;
+}
+
+.finder {
+  font-size: 11pt;
+  text-align: center;
+  padding-top: 100px;
+}
+
+textarea {
+  text-align: left;
+  width: 800px;
+}
+
+input[type='text'] {
+  width: 15em;
+  font-size: 12pt;
+}
+
+button {
+  height: 24px;
 }

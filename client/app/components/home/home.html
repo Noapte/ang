@@ -1,9 +1,39 @@
-<navbar></navbar>
-<header>
-  <hero></hero>
-</header>
-<main>
-  <div>
-    <h1>Found in {{ $ctrl.name }}.html</h1>
+<div class="finder">
+    <h1>Find flight</h1>
+    From:
+    <input type="text" ng-model-options="{ debounce: 1000 }"
+           ng-change="$ctrl.validate($ctrl.selectStart.model)"
 
-</main>
+           list="possibleStart" placeholder="Country,city or airport"
+           ng-model="$ctrl.selectStart.model"/>
+    <datalist id="possibleStart">
+        <option ng-repeat="option in $ctrl.selectStart.availableOptions" value="{{option.name}}">
+    </datalist>
+
+    To:
+    <input type="text" ng-model-options="{ debounce: 1000 }"
+           list="possibleEnd" placeholder="Country,city or airport"
+           ng-model="$ctrl.selectEnd.model"/>
+    <datalist id="possibleEnd">
+        <option ng-repeat="option in $ctrl.selectEnd.availableOptions" value="{{option.name}}">
+    </datalist>
+
+    Date from:
+    <input type="date" ng-model="$ctrl.startDate"
+           placeholder="yyyy-MM-dd"/>
+    Date to:
+    <input type="date" ng-model="$ctrl.endDate"
+           placeholder="yyyy-MM-dd"/>
+    <button ng-click="$ctrl.find()"
+            ng-disabled="!($ctrl.startDate && $ctrl.endDate && $ctrl.selectEnd.model && $ctrl.selectStart.model)">Find
+        flight
+    </button>
+    <br/>
+    <br/>
+    <div>
+        <textarea ng-list="&#10;"
+                  class="console ng-pristine ng-valid ng-not-empty ng-touched"
+                  ng-trim="false" readonly="" rows="15" ng-model="$ctrl.logs"></textarea>
+    </div>
+</div>
+</div>
