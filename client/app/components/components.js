@@ -3,6 +3,6 @@ import Home from './home/home';
 let componentModule = angular.module('app.components', [
   Home
 ])
-.name;
+  .name;
 
 export default componentModule;
