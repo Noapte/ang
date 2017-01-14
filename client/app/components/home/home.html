@@ -13,22 +13,35 @@
 <div class="container">
   <table class="table table-striped">
     <tbody>
-    <tr>
-      <td><input class="form-control" placeholder='Wpisz nazwe salonu' ng-model="$ctrl.salonName" type="text"> </input>
+    <tr style="width:130px">
+      <td><input class="form-control" placeholder='[wybierz salon]' ng-model="$ctrl.salonName" type="text"> </input>
       </td>
     </tr>
-    <tr>
+    <tr style="width:130px">
      <td>
-       <div class="dropdown">
-         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{$ctrl.selected}}
-           <span class="caret"></span></button>
-         <ul class="dropdown-menu" ng-model="$ctrl.months">
+       <div style="width:130px"class="dropdown">
+         <button  style="width:130px" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{$ctrl.selected}}
+
+           <span ng-if="$ctrl.sel2" class="caret"></span></button>
+         <ul style="width:130px" class="dropdown-menu" ng-model="$ctrl.months">
            <li ng-click='$ctrl.ble(month)'ng-repeat="month in $ctrl.months"><a href="#">{{month}}</a></li>
          </ul>
        </div>
      </td>
     </tr>
     <tr>
+
+
+
+
+
+
+
+
+
+
+
+
 
     </tr>
     </tbody>

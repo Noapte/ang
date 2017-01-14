@@ -55,12 +55,7 @@ const daysOfWeek =
     'sobota',
     'niedziela'];
 
-
-
 class HomeController {
-
-
-
 
   constructor() {
     var vm = this;
@@ -68,15 +63,17 @@ class HomeController {
     vm.months = months;
     vm.daysOfWeek = daysOfWeek;
 vm.selected = 'wybierz miesiąc';
+    vm.sel2 = true;
     vm.ble = ble;
     function ble(name) {
       vm.selected = name;
+      vm.sel2 = false;
       console.log(name)
     }
 
 
 
-    
+
 
 
 
