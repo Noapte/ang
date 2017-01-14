@@ -1,13 +1,16 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import homeComponent from './home.component';
 
+import homeComponent from './home.component';
+require('angular-ui-bootstrap');
 let homeModule = angular.module('home', [
-  uiRouter
+  uiRouter,
+  'ui.bootstrap'
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {
   "ngInject";
+  
 
   $urlRouterProvider.otherwise('/');
 
