@@ -22,25 +22,19 @@
         <div style="width:130px" class="dropdown">
           <button style="width:130px" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
             {{$ctrl.selected}}
-
-            <span ng-if="$ctrl.sel2" class="caret"></span></button>
+            <span ng-if="$ctrl.defaultSelected" class="caret"></span></button>
           <ul style="width:130px" class="dropdown-menu" ng-model="$ctrl.months">
             <li ng-click='$ctrl.ble(month)' ng-repeat="month in $ctrl.months"><a href="#">{{month}}</a></li>
           </ul>
         </div>
       </td>
-
-
     </tr>
     <tr>
-
-
+      <td><input ng-change='$ctrl.changeYear()' class="form-control"  ng-model="$ctrl.year"
+                 type="number"> </input>
+      </td>
     </tr>
     </tbody>
-
-
-    {{$ctrl.salonName}}
-
 
     <table ng-model="$ctrl.names">
       <tr ng-repeat="x in $ctrl.names | orderBy : 'Country'">
@@ -51,6 +45,8 @@
         <!--<td>fff: {{x.number}}</td>-->
       </tr>
     </table>
+
+
 
 
     <!--<div class="finder">-->

@@ -47,34 +47,46 @@ const months =
     'grudzień'];
 
 const daysOfWeek =
-['poniedziałek',
+  ['niedziela',
+    'poniedziałek',
     'wtorek',
     'środa',
     'czwartek',
     'piątek',
-    'sobota',
-    'niedziela'];
+    'sobota'];
 
 class HomeController {
 
   constructor() {
+
     var vm = this;
     vm.names = names;
     vm.months = months;
     vm.daysOfWeek = daysOfWeek;
-vm.selected = 'wybierz miesiąc';
-    vm.sel2 = true;
+    vm.selected = 'wybierz miesiąc';
+    vm.defaultSelected = true;
+    vm.year = new Date().getFullYear();
     vm.ble = ble;
+    vm.changeYear = changeYear;
     function ble(name) {
       vm.selected = name;
-      vm.sel2 = false;
-      console.log(name)
+      vm.defaultSelected = false;
+      const b = months.indexOf(vm.selected) + 1;
+      console.log(daysInMonth(b, vm.year));
+
+    }
+
+    function daysInMonth(month, year) {
+      var months = month - 1;
+      console.log('first ' +daysOfWeek[ new Date(year, months).getDay()])
+      return new Date(year, month, 0).getDate();
     }
 
 
-
-
-
+    function changeYear(){
+      const b = months.indexOf(vm.selected) + 1;
+      console.log(daysInMonth(b, vm.year));
+    }
 
 
     // vm.startDate = null;
