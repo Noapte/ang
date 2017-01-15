@@ -1,27 +1,15 @@
-<table>
-  <tr>
-
-  </tr>
-  <tr>
-    <td>
-
-    </td>
-  </tr>
-</table>
-
-
 <div class="container">
   <table class="table table-striped">
     <tbody>
     <tr style="width:130px">
-      <td><input class="form-control" placeholder='[wybierz salon]' ng-model="$ctrl.salonName" type="text"> </input>
-      </td>
-      <td style='vertical-align: bottom; width:10px;' rowspan="3"> D</td>
-
-
+      <th><input class="form-control" placeholder='[wybierz salon]' ng-model="$ctrl.salonName" type="text"> </input>
+      </th>
+      <th style='vertical-align: bottom; width:10px;' rowspan="3"> D</th>
+      <th ng-repeat="i in $ctrl.employees track by $index" colspan="4"> Pracownik</th>
     </tr>
     <tr style="width:140px">
-      <td>
+
+      <th>
         <div style="width:130px" class="dropdown">
           <button style="width:130px" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
             {{$ctrl.selected}}
@@ -30,15 +18,29 @@
             <li ng-click='$ctrl.ble(month)' ng-repeat="month in $ctrl.months"><a href="#">{{month}}</a></li>
           </ul>
         </div>
-      </td>
+      </th>
+      <th ng-repeat="i in $ctrl.employees track by $index" colspan="4"> {{i.number}}</th>
     </tr>
     <tr>
-      <td><input ng-change='$ctrl.changeYear()' class="form-control" ng-model="$ctrl.year"
+      <th><input ng-change='$ctrl.changeYear()' class="form-control" ng-model="$ctrl.year"
                  type="number"> </input>
-      </td>
+      </th>
+
+      <th ng-repeat-start="i in $ctrl.employees track by $index">
+        od
+      </th>
+      <th> do</th>
+      <th> H</th>
+      <th ng-repeat-end>
+        Podpis
+      </th>
     </tr>
-    <tr ng-repeat='i in $ctrl.numberOfDays track by $index' style="width:130px">
+    <tr ng-repeat='i in $ctrl.numberOfDays track by $index' >
       <td>{{i}}</td>
       <td>{{$index +1}}</td>
+      <td ng-repeat-start="emp in $ctrl.employees track by $index"><input class="form-control-hours"  type="number"> </input></td>
+      <td><input class="form-control-hours"  type="number"> </input></td>
+      <td>0</td>
+      <td ng-repeat-end>X</td>
     </tr>
     </tbody>

@@ -7,8 +7,20 @@ table, th, td {
   width: 20px;
 }
 
-
+.btn-default {
+  border-color: white;
+  border-radius: 0px;
+}
 .table > tbody > tr > td {
+  padding: 0px;
+  text-align: center;
+
+}
+.form-control-hours {
+  width:60px;
+}
+
+.table > tbody > tr > th {
   padding: 0px;
   text-align: center;
 
@@ -28,11 +40,22 @@ td input {
   text-align: center;
 }
 
+th input {
+  box-sizing: border-box;
+  border: 0px;
+  text-align: center;
+}
+
 .form-control {
   border: 0px;
 }
 
 td select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+th select {
   width: 100%;
   box-sizing: border-box;
 }

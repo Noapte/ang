@@ -23,6 +23,18 @@ const daysOfWeek =
     'piątek',
     'sobota'];
 
+const employees = [
+  {number: 1, from: {}, to: {} },
+
+  {number: 2 ,from: {}, to: {}},
+  {number: 3 ,from: {}, to: {}},
+  {number: 4 ,from: {}, to: {}},
+  {number: 5 ,from: {}, to: {} }
+];
+
+
+
+
 class HomeController {
 
   constructor() {
@@ -30,7 +42,7 @@ class HomeController {
     var vm = this;
     vm.numberOfDays = [];
 
-
+vm.employees = employees;
     vm.months = months;
     vm.daysOfWeek = daysOfWeek;
     vm.selected = 'wybierz miesiąc';
@@ -50,11 +62,9 @@ class HomeController {
         vm.numberOfDays.push(`${vm.daysOfWeek[(firstDay + i) % 7]}`);
       }
     }
-
     function daysInMonth(month, year) {
       return new Date(year, month, 0).getDate();
     }
-
     function changeYear() {
       const b = months.indexOf(vm.selected) + 1;
       vm.numberOfDays = [];
