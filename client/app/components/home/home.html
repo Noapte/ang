@@ -19,7 +19,7 @@
           </ul>
         </div>
       </th>
-      <th ng-repeat="i in $ctrl.employees track by $index" colspan="4"> {{i.number}}</th>
+      <th ng-repeat="i in $ctrl.employees track by $index" colspan="4"> {{i.id}}</th>
     </tr>
     <tr>
       <th><input ng-change='$ctrl.changeYear()' class="form-control" ng-model="$ctrl.year"
@@ -35,12 +35,34 @@
         Podpis
       </th>
     </tr>
-    <tr ng-repeat='i in $ctrl.numberOfDays track by $index' >
+    <tr ng-repeat='i in $ctrl.numberOfDays track by $index'>
       <td>{{i}}</td>
       <td>{{$index +1}}</td>
-      <td ng-repeat-start="emp in $ctrl.employees track by $index"><input class="form-control-hours"  type="number"> </input></td>
-      <td><input class="form-control-hours"  type="number"> </input></td>
-      <td>0</td>
-      <td ng-repeat-end>X</td>
+      <td ng-repeat-start="emp in $ctrl.employees track by $index">
+        <input ng-change="$ctrl.countSum(emp, $parent.$index)" ng-model='emp.from[$parent.$index]'
+               class="form-control-hours" min="0" max="23" type="number"> </input></td>
+      <td><input ng-change="$ctrl.countSum(emp, $parent.$index)" ng-model='emp.to[$parent.$index]' min="0" max="23"
+                 class="form-control-hours" type="number"> </input></td>
+      <td>{{emp.sum[$parent.$index]}}</td>
+      <td ng-repeat-end><span ng-if="!emp.sum[$parent.$index]">X</span></td>
+    </tr>
+    <tr>
+      <td colspan="2">H/m-c:</td>
+      <td colspan="4" ng-repeat="emp in $ctrl.employees track by $index">
+        Suma H
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">{{$ctrl.hoursPerMonth}}</td>
+      <td colspan="4" ng-repeat="emp in $ctrl.employees track by $index">
+        {{emp.totalSum}}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">Pozostało H:</td>
+      <td  colspan="4" ng-repeat="emp in $ctrl.employees track by $index">
+        {{emp.totalSum - $ctrl.hoursPerMonth }}
+      </td>
+
     </tr>
     </tbody>
