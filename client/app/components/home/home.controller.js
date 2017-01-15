@@ -53,10 +53,11 @@ class HomeController {
     vm.hoursPerMonth = 160;
     vm.year = new Date().getFullYear();
     setDateMap();
-    vm.ble = ble;
+    vm.changeMonth = changeMonth;
     vm.changeYear = changeYear;
-    function ble(name) {
+    function changeMonth(name) {
       vm.selected = name;
+      cleanUp();
       setDateMap();
     }
 
@@ -85,7 +86,17 @@ class HomeController {
     }
 
     function changeYear() {
+      cleanUp();
       setDateMap();
+    }
+
+    function cleanUp(){
+      _.each(vm.employees, employee => {
+        employee.from = null;
+        employee.to = null;
+        employee.sum = [];
+        employee.totalSum = 0;
+      })
     }
 
   }

@@ -15,7 +15,7 @@
             {{$ctrl.selected}}
      </button>
           <ul style="width:130px" class="dropdown-menu" ng-model="$ctrl.months">
-            <li ng-click='$ctrl.ble(month)' ng-repeat="month in $ctrl.months"><a href="#">{{month}}</a></li>
+            <li ng-click='$ctrl.changeMonth(month)' ng-repeat="month in $ctrl.months"><a href="#">{{month}}</a></li>
           </ul>
         </div>
       </th>
