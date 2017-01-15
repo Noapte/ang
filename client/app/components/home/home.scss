@@ -5,6 +5,8 @@ table, th, td {
 
 .table {
   width: 20px;
+  overflow: scroll;
+  margin-top: 30px;
 }
 
 .btn-default {
@@ -23,6 +25,7 @@ table, th, td {
 .table > tbody > tr > th {
   padding: 0px;
   text-align: center;
+  vertical-align: 0px;
 
 }
 

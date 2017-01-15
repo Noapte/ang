@@ -1,5 +1,4 @@
-import * as flightUtils from './flightUtils';
-
+import * as _ from 'lodash';
 const months =
   ['styczeń',
     'luty',
