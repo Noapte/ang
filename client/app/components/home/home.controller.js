@@ -49,24 +49,15 @@ class HomeController {
     vm.employees = employees;
     vm.months = months;
     vm.daysOfWeek = daysOfWeek;
-    vm.selected = 'wybierz miesiąc';
-    vm.defaultSelected = true;
+    vm.selected = vm.months[new Date().getMonth()];
     vm.hoursPerMonth = 160;
     vm.year = new Date().getFullYear();
+    setDateMap();
     vm.ble = ble;
     vm.changeYear = changeYear;
     function ble(name) {
       vm.selected = name;
-      vm.defaultSelected = false;
-      const b = months.indexOf(vm.selected) + 1;
-      vm.numberOfDays = [];
-      const daysNumber = daysInMonth(b, vm.year);
-      var months2 = b - 1;
-      const firstDay = new Date(vm.year, months2).getDay();
-
-      for (let i = 0; i < daysNumber; i++) {
-        vm.numberOfDays.push(`${vm.daysOfWeek[(firstDay + i) % 7]}`);
-      }
+      setDateMap();
     }
 
     function daysInMonth(month, year) {
@@ -78,20 +69,23 @@ class HomeController {
       const from = emp.from && emp.from[index] ? emp.from[index] : 0;
       emp.sum[index] = to - from;
       emp.totalSum = emp.sum.reduce((a, b)=> {
-
         return a + b;
       })
     }
+    function setDateMap(){
 
-    function changeYear() {
-      const b = months.indexOf(vm.selected) + 1;
+      const month = months.indexOf(vm.selected);
       vm.numberOfDays = [];
-      const daysNumber = daysInMonth(b, vm.year);
-      var months2 = b - 1;
-      const firstDay = new Date(vm.year, months2).getDay();
+      const daysNumber = daysInMonth(month +1, vm.year);
+      const firstDay = new Date(vm.year, month).getDay();
+
       for (let i = 0; i < daysNumber; i++) {
         vm.numberOfDays.push(`${vm.daysOfWeek[(firstDay + i) % 7]}`);
       }
+    }
+
+    function changeYear() {
+      setDateMap();
     }
 
   }

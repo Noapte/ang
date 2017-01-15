@@ -13,7 +13,7 @@
         <div style="width:130px" class="dropdown">
           <button style="width:130px" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
             {{$ctrl.selected}}
-            <span ng-if="$ctrl.defaultSelected" class="caret"></span></button>
+     </button>
           <ul style="width:130px" class="dropdown-menu" ng-model="$ctrl.months">
             <li ng-click='$ctrl.ble(month)' ng-repeat="month in $ctrl.months"><a href="#">{{month}}</a></li>
           </ul>
