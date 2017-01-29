@@ -51,6 +51,7 @@ class HomeController {
     vm.selected = vm.months[new Date().getMonth()];
     vm.hoursPerMonth = 160;
     vm.year = new Date().getFullYear();
+    vm.add = add;
     setDateMap();
     vm.changeMonth = changeMonth;
     vm.changeYear = changeYear;
@@ -60,6 +61,9 @@ class HomeController {
       setDateMap();
     }
 
+    function add(){
+      vm.employees.push(new createEmployee(''));
+    }
     function daysInMonth(month, year) {
       return new Date(year, month, 0).getDate();
     }
