@@ -6,7 +6,8 @@ let homeComponent = {
     restrict: 'E',
     bindings: {},
     template,
-    controller
+    controller: ['FileSaver', controller]
+
 };
 
 export default homeComponent;

@@ -6,6 +6,7 @@
       </th>
       <th style='vertical-align: bottom; width:10px;' rowspan="3"> D</th>
       <th ng-repeat="i in $ctrl.employees track by $index" colspan="4"> Pracownik</th>
+      <th><button class="btn btn-default" type="button" ng-click="$ctrl.exportFile()">eksportuj do excela</button></th>
       <th><button class="btn btn-default" type="button" ng-click="$ctrl.add()">dodaj nowego pracownika</button></th>
     </tr>
     <tr style="width:140px">

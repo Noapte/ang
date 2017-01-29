@@ -41,7 +41,7 @@ function createEmployee(id) {
 }
 class HomeController {
 
-  constructor() {
+  constructor(fileSaver) {
     var vm = this;
     vm.numberOfDays = [];
     vm.countSum = countSum;
@@ -52,6 +52,7 @@ class HomeController {
     vm.hoursPerMonth = 160;
     vm.year = new Date().getFullYear();
     vm.add = add;
+    vm.exportFile = exportFile;
     setDateMap();
     vm.changeMonth = changeMonth;
     vm.changeYear = changeYear;
@@ -66,6 +67,11 @@ class HomeController {
     }
     function daysInMonth(month, year) {
       return new Date(year, month, 0).getDate();
+    }
+    function exportFile(){
+      const csvBlob = new Blob(['k'], {type: 'text/plain', endings: 'native'});
+      fileSaver.saveAs(csvBlob, 'k');
+
     }
 
     function countSum(emp, index) {
