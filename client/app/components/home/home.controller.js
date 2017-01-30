@@ -72,16 +72,16 @@ class HomeController {
       return new Date(year, month, 0).getDate();
     }
     function exportFile(){
-      var tab = document.getElementById('ble').innerHTML.replace(/<input ng-model=".*" class.*>/g, 'gggg</td>');
+        vm.print = true;
 
-console.log(tab)
-      var blob = new Blob(["\uFEFF" + tab], {
+      
+      var tab = document.getElementById('timetable').innerHTML.replace(/(<input textvalue\=\"([0-9|a-z]*)\" [0-9|a-z|ę|,|\-|.|$|\"|\[|\]|\n|(|)|=| ]+>)/ig,'$2');
+      tab = tab.replace(/<ul (.*\n)+.*<\/ul>/ig, '');
+        console.log(tab)
+        var blob = new Blob(["\uFEFF" + tab], {
         type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=windows-1252s"
       });
       fileSaver.saveAs(blob, "Report.xls");
-       //     const csvBlob = new Blob(['dd;ddd;ddddcccccccccccccccccccccc; bbbbbbb \n dddd;cos'], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
-   //   fileSaver.saveAs(csvBlob, 'k.csv');
-
     }
 
     function countSum(emp, index) {
