@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+
 const months =
   ['styczeń',
     'luty',
@@ -36,6 +37,8 @@ function createEmployee(id) {
   this.id = id;
   this.from = null;
   this.to = null;
+
+
   this.sum = [];
   this.totalSum = 0;
 }
@@ -69,8 +72,15 @@ class HomeController {
       return new Date(year, month, 0).getDate();
     }
     function exportFile(){
-      const csvBlob = new Blob(['k'], {type: 'text/plain', endings: 'native'});
-      fileSaver.saveAs(csvBlob, 'k');
+      var tab = document.getElementById('ble').innerHTML.replace(/<input ng-model=".*" class.*>/g, 'gggg</td>');
+
+console.log(tab)
+      var blob = new Blob(["\uFEFF" + tab], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=windows-1252s"
+      });
+      fileSaver.saveAs(blob, "Report.xls");
+       //     const csvBlob = new Blob(['dd;ddd;ddddcccccccccccccccccccccc; bbbbbbb \n dddd;cos'], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+   //   fileSaver.saveAs(csvBlob, 'k.csv');
 
     }
 
