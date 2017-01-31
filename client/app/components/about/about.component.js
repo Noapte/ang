@@ -3,10 +3,11 @@ import controller from './about.controller';
 import './about.scss';
 
 let aboutComponent = {
-  restrict: 'E',
+  restrict: 'A',
   bindings: {
     ble: '=',
-    printable: '='
+    printable: '=',
+    styles: '='
   },
   template,
   controller: ['$scope', controller]
