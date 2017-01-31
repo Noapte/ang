@@ -54,15 +54,18 @@
                 Podpis
             </th>
         </tr>
-        <tr ng-repeat='i in $ctrl.numberOfDays track by $index' ng-style="$ctrl.isWeekend(i)? {'background-color': '#D3D3D3'}: {}">
+        <tr ng-repeat='i in $ctrl.numberOfDays track by $index'
+            ng-style="$ctrl.isWeekend(i)? {'background-color': '#D3D3D3'}: {}">
             <td>{{i}}</td>
             <td>{{$index +1}}</td>
             <td ng-repeat-start="emp in $ctrl.employees track by $index">
 
-                <input ng-style="$ctrl.isWeekend(i)? {'background-color': '#D3D3D3'}: {}" ng-change="$ctrl.countSum(emp, $parent.$index)"
+                <input ng-style="$ctrl.isWeekend(i)? {'background-color': '#D3D3D3'}: {}"
+                       ng-change="$ctrl.countSum(emp, $parent.$index)"
                        ng-model='emp.from[$parent.$index]'
                        class="form-control-hours" min="0" max="23" type="number"> </input></td>
-            <td><input ng-style="$ctrl.isWeekend(i)? {'background-color': '#D3D3D3'}: {}" ng-change="$ctrl.countSum(emp, $parent.$index)"
+            <td><input ng-style="$ctrl.isWeekend(i)? {'background-color': '#D3D3D3'}: {}"
+                       ng-change="$ctrl.countSum(emp, $parent.$index)"
                        ng-model='emp.to[$parent.$index]' min="0" max="23"
                        class="form-control-hours" type="number"> </input></td>
             <td>{{emp.sum[$parent.$index]}}</td>
@@ -85,6 +88,29 @@
             <td colspan="4" ng-repeat="emp in $ctrl.employees track by $index">
                 {{emp.totalSum - $ctrl.hoursPerMonth }}
             </td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: left;padding-left:10px">Legenda:</td>
+        </tr>
+        <tr>
+            <td colspan="1" style="text-align: center;background-color:red">DUW</td>
+            <td colspan="5" style="text-align: left;padding-left:10px">- dni ustawowo wolne</td>
+        </tr>
+        <tr>
+            <td colspan="1" style="text-align: center;background-color:yellow">ZW</td>
+            <td colspan="5" style="text-align: left;padding-left:10px">- zadeklarowane wolne</td>
+        </tr>
+        <tr>
+            <td colspan="1" style="text-align: center;background-color:#D3D3D3"></td>
+            <td colspan="5" style="text-align: left;padding-left:10px">weekend</td>
+        </tr>
+        <tr>
+            <td colspan="1" style="text-align: center;background-color:hotpink">U</td>
+            <td colspan="5" style="text-align: left;padding-left:10px">- urlop</td>
+        </tr>
+        <tr>
+            <td colspan="1" style="text-align: center;background-color:green">L4</td>
+            <td colspan="5" style="text-align: left;padding-left:10px">- L4</td>
         </tr>
         </tbody>
     </table>
