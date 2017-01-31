@@ -10,10 +10,13 @@
             <th style='vertical-align: bottom; width:20px;' rowspan="3"> D</th>
             <th ng-repeat="i in $ctrl.employees track by $index" colspan="4"> Pracownik</th>
             <th>
-                <button class="btn btn-default" type="button" ng-click="$ctrl.exportFile()">eksportuj do excela</button>
+                <button class="btn btn-default" type="button" ng-click="$ctrl.add()">dodaj nowego pracownika</button>
             </th>
             <th>
-                <button class="btn btn-default" type="button" ng-click="$ctrl.add()">dodaj nowego pracownika</button>
+                <button class="btn btn-default" type="button" ng-click="$ctrl.exportExcel()">eksportuj excel</button>
+            </th>
+            <th>
+                <button class="btn btn-default" type="button" ng-click="$ctrl.printFile()">drukuj</button>
             </th>
         </tr>
         <tr style="width:140px">
