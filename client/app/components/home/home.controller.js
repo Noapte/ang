@@ -30,8 +30,13 @@ class HomeController {
         vm.printFile = printFile;
         vm.changeMonth = changeMonth;
         vm.changeYear = changeYear;
+        vm.isWeekend = isWeekend;
 
         setDateMap();
+
+        function isWeekend(i){
+            return i === 'sobota' || i === 'niedziela';
+        }
 
         function changeMonth(name) {
             vm.selected = name;
