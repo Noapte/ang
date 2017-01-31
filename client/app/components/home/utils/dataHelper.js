@@ -21,7 +21,18 @@ const daysOfWeek =
         'piątek',
         'sobota'];
 
+function isWeekend(day) {
+    return day === 'sobota' || day === 'niedziela';
+}
+function countHolidays(daysList) {
+    return daysList.reduce((previousValue, currentValue)=> {
+        const val = (currentValue.isHoliday) ? previousValue + 1 : previousValue;
+        return val;
+    }, 0);
+}
 export  {
     months,
-    daysOfWeek
+    daysOfWeek,
+    isWeekend,
+    countHolidays
 };

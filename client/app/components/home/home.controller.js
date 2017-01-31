@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import * as constants from './utils/constants';
+import * as dataHelpers from './utils/dataHelper';
 import Employee from './utils/employeeCreator';
 
 const employees = [
@@ -15,8 +15,8 @@ class HomeController {
 
     constructor($scope, fileSaver) {
         var vm = this;
-        vm.months = constants.months;
-        vm.daysOfWeek = constants.daysOfWeek;
+        vm.months = dataHelpers.months;
+        vm.daysOfWeek = dataHelpers.daysOfWeek;
         vm.numberOfDays = [];
         vm.print = true;
         vm.printStyle = {'border': '0.1pt  solid #808080', 'padding': '0px', 'margin': '0px', 'text-align': 'middle'};
@@ -30,12 +30,21 @@ class HomeController {
         vm.printFile = printFile;
         vm.changeMonth = changeMonth;
         vm.changeYear = changeYear;
-        vm.isWeekend = isWeekend;
+        vm.setRowStyle = setRowStyle;
+        vm.setHoliday = setHoliday;
 
         setDateMap();
 
-        function isWeekend(i){
-            return i === 'sobota' || i === 'niedziela';
+        function setHoliday(index) {
+            vm.numberOfDays[index].isHoliday = true;
+            vm.hoursPerMonth = 160 - dataHelpers.countHolidays(vm.numberOfDays)*8;
+        }
+
+        function setRowStyle(i) {
+            if (i.isHoliday)
+                return {'background-color': 'red'};
+            if (dataHelpers.isWeekend(i.day))
+                return {'background-color': '#D3D3D3'};
         }
 
         function changeMonth(name) {
@@ -61,10 +70,10 @@ class HomeController {
         }
 
         function printFile() {
-            var html='<html>';
-            html+= document.getElementById('toPrint').innerHTML;            
-            html+='</html>';            
-            var printWin = window.open('','','left=0,top=0,width=1,height=1,toolbar=0,scrollbars=0,status  =0');
+            var html = '<html>';
+            html += document.getElementById('toPrint').innerHTML;
+            html += '</html>';
+            var printWin = window.open('', '', 'left=0,top=0,width=1,height=1,toolbar=0,scrollbars=0,status  =0');
             printWin.document.write(html);
             printWin.document.close();
             printWin.focus();
@@ -88,7 +97,7 @@ class HomeController {
             const firstDay = new Date(vm.year, month).getDay();
 
             for (let i = 0; i < daysNumber; i++) {
-                vm.numberOfDays.push(`${vm.daysOfWeek[(firstDay + i) % 7]}`);
+                vm.numberOfDays.push({day: `${vm.daysOfWeek[(firstDay + i) % 7]}`, isHoliday: false});
             }
         }
 
